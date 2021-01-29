@@ -21,7 +21,7 @@ namespace Tracing {
 	public static void SDT_WITH_SEMAPHORE(string provider, string name, ...);
 			
 	[CCode (cname = "FOLLY_SDT_GET_STATUS")]
-	public static bool SDT_GET_STATUS(string provider, string name, int ret);
+	public static bool SDT_GET_STATUS(string provider, string name, out int ret);
 	
 
 	public static bool SDT_IS_ENABLED(int status){

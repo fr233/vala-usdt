@@ -35,12 +35,11 @@
 
 
 #define FOLLY_SDT_GET_STATUS(provider, name, ret) \
-     asm volatile ("movzwl " FOLLY_SDT_SEMAPHORE_STR(provider, name) "(%%rip), %0" "\n" \
-	: "=r" (ret) \
+     asm volatile ("movzwl " FOLLY_SDT_SEMAPHORE_STR(provider, name) "(%%rip), %%eax" "\n" \
+          "mov %%eax, %0 " "\n" \
+	: "=nor" (*(ret)) \
 	: \
-	: ); \
-    
-
+	: "eax"); \
 
 
 #else
